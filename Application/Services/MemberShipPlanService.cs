@@ -14,19 +14,26 @@ namespace Application.Services
         {
             this.memberShipPlanRepository = memberShipPlanRepository;
         }
-
-        public MemberShipPlan SaveMemberShipPlan(MemberShipPlan memberShipPlan)
+        
+        public MemberShipPlan AddMemberShipPlan(MemberShipPlan memberShipPlan)
         {
-            if (memberShipPlan.Id > 0)
-            {
-                memberShipPlan.UpdateDate = DateTime.Now;
-                memberShipPlanRepository.UpdateMemberShipPlan(memberShipPlan);
-            }
-            else
-            {
-                memberShipPlanRepository.addMemberShipPlan(memberShipPlan);
-            }
-            return memberShipPlan;
+            return memberShipPlanRepository.addMemberShipPlan(memberShipPlan);
+        }
+
+        public MemberShipPlan UpdateMemberShipPlan(MemberShipPlan memberShipPlan)
+        {
+            memberShipPlan.UpdateDate = DateTime.Now;
+            return memberShipPlanRepository.UpdateMemberShipPlan(memberShipPlan);
+        }
+
+        public MemberShipPlan GetMemberShipPlan(int Id)
+        {
+            return memberShipPlanRepository.GetMemberShipPlan(Id);
+        }
+
+        public List<MemberShipPlan> GetAllMemberShipPlans()
+        {
+            return memberShipPlanRepository.GetAllMemberShipPlans();
         }
 
         public List<MemberShipPlan> GetMemberShipPlans()

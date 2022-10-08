@@ -1,0 +1,63 @@
+﻿@model Domain.Models.MemberShipPlan
+@{
+    ViewData["Title"] = "UpdateMemberShipPlan";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Update Tag</h4>
+                    <p class="card-description">
+                
+                    </p>
+                    <form asp-action="UpdateMemberShipPlan">
+                        <div class="form-group">
+                            <label>Id</label>
+                            <input type="text" class="form-control" disabled value="@Model.Id">
+                            <input type="text" class="form-control" asp-for="Id" name="Id" hidden="hidden" value="@Model.Id">
+                        </div>
+                        <div class="form-group" hidden="hidden">
+                            <label>Id</label>
+                            <input type="text" class="form-control" asp-for="InsertionDate" name="InsertionDate" hidden="hidden" value="@Model.InsertionDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="Text">Name</label>
+                            <input type="text" class="form-control" asp-for="Name" name="Text" id="Name" value="@Model.Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Text">Icon Url</label>
+                            <input type="text" class="form-control" asp-for="IconUrl" name="Text" id="IconUrl" value="@Model.IconUrl">
+                            <span asp-validation-for="IconUrl" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Text">Price</label>
+                            <input type="number" class="form-control" asp-for="Price" name="Price" id="Price" value="@Model.Price">
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Text">List Count</label>
+                            <input type="number" class="form-control" asp-for="ListCount" name="int" id="ListCount" value="@Model.ListCount">
+                            <span asp-validation-for="ListCount" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Text">Featured List Count</label>
+                            <input type="number" class="form-control" asp-for="FeaturedListCount" name="Text" id="Text" value="@Model.FeaturedListCount">
+                            <span asp-validation-for="FeaturedListCount" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Text">Status</label>
+                            @Html.DropDownList("Status", (IEnumerable<SelectListItem>)ViewBag.status, htmlAttributes: new { @class = "form-control" })
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

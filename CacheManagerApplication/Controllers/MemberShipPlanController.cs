@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Application.Interfaces;
-using Domain.Constants;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,28 +9,28 @@ using static Domain.Constants.Constants;
 
 namespace CacheManagerApplication.Controllers
 {
-    public class TagController : Controller
+    public class MemberShipPlanController : Controller
     {
-        private readonly ITagService tagService;
-        public TagController(ITagService tagService)
+        private readonly IMemberShipPlanService memberShipPlanService;
+        public MemberShipPlanController(IMemberShipPlanService memberShipPlanService)
         {
-            this.tagService = tagService;
+            this.memberShipPlanService = memberShipPlanService;
         }
 
         [HttpGet]
-        public IActionResult CreateTag()
+        public IActionResult CreateMemberShipPlan()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult CreateTag(Tag tag)
+        public IActionResult CreateMemberShipPlan(MemberShipPlan memberShipPlan)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    tagService.AddTag(tag);
+                    memberShipPlanService.AddMemberShipPlan(memberShipPlan);
                 }
             }
             catch (Exception ex)
@@ -40,26 +39,26 @@ namespace CacheManagerApplication.Controllers
                 throw;
             }
 
-            if (tag.Id > 0)
+            if (memberShipPlan.Id > 0)
             {
-                return RedirectToAction("ListTags", "Tag");
+                return RedirectToAction("ListMemberShipPlans", "MemberShipPlan");
             }
             else
             {
-                return View(tag);
+                return View(memberShipPlan);
             }
         }
 
         [HttpGet]
-        public IActionResult UpdateTag(int Id)
+        public IActionResult UpdateMemberShipPlan(int Id)
         {
-            Tag tag = null;
+            MemberShipPlan memberShipPlan = null;
             try
             {
-                tag = tagService.GetTag(Id);
+                memberShipPlan = memberShipPlanService.GetMemberShipPlan(Id);
                 IList<SelectListItem> status = Enum.GetValues(typeof(StatusCodes)).Cast<StatusCodes>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }).ToList();
                 SelectList tStatus = new SelectList(status, "Value", "Text");
-                tStatus.First(x => x.Value == ((int)tag.Status).ToString()).Selected = true;
+                tStatus.First(x => x.Value == ((int)memberShipPlan.Status).ToString()).Selected = true;
                 ViewBag.status = tStatus;
             }
             catch (Exception ex)
@@ -68,24 +67,24 @@ namespace CacheManagerApplication.Controllers
                 throw;
             }
 
-            if (tag == null)
+            if (memberShipPlan == null)
             {
-                return RedirectToAction("ListTags", "Tag");
+                return RedirectToAction("ListMemberShipPlans", "MemberShipPlan");
             }
             else
             {
-                return View(tag);
+                return View(memberShipPlan);
             }
         }
 
         [HttpPost]
-        public IActionResult UpdateTag(Tag tag)
+        public IActionResult UpdateMemberShipPlan(MemberShipPlan memberShipPlan)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    tagService.UpdateTag(tag);
+                    memberShipPlanService.UpdateMemberShipPlan(memberShipPlan);
                 }
             }
             catch (Exception ex)
@@ -93,30 +92,30 @@ namespace CacheManagerApplication.Controllers
                 Console.WriteLine(ex);
                 throw;
             }
-            
+
             if (ModelState.IsValid)
             {
-                return RedirectToAction("ListTags", "Tag");
+                return RedirectToAction("ListMemberShipPlans", "MemberShipPlan");
             }
             else
             {
-                return View(tag);
+                return View(memberShipPlan);
             }
         }
 
-        public IActionResult ListTags()
+        public IActionResult ListMemberShipPlans()
         {
-            List<Tag> tags = null;
+            List<MemberShipPlan> memberShipPlans = null;
             try
             {
-                tags = tagService.GetTags();
+                memberShipPlans = memberShipPlanService.GetAllMemberShipPlans();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 throw;
             }
-            return View(tags);
+            return View(memberShipPlans);
         }
     }
 }

@@ -5,7 +5,10 @@ namespace Application.Interfaces
 {
     public interface IMemberShipPlanService
     {
-        MemberShipPlan SaveMemberShipPlan(MemberShipPlan memberShipPlan);
+        MemberShipPlan AddMemberShipPlan(MemberShipPlan memberShipPlan);
+        MemberShipPlan UpdateMemberShipPlan(MemberShipPlan memberShipPlan);
+        MemberShipPlan GetMemberShipPlan(int Id);
+        List<MemberShipPlan> GetAllMemberShipPlans();
         List<MemberShipPlan> GetMemberShipPlans();
     }
 }

@@ -4,6 +4,7 @@ using Application.Logging;
 using Application.Mapping;
 using Application.Models;
 using Application.Services;
+using Application.ValidationRules.FluentValidation.MemberShipPlans;
 using Application.ValidationRules.FluentValidation.Tag;
 using AutoMapper;
 using Domain.Interfaces;
@@ -46,9 +47,9 @@ namespace Infrastructure.Ioc
             services.AddScoped<IPropertyRepository, PropertyRepository>();
             services.AddScoped<IMemberShipPlanService, MemberShipPlanService>();
             services.AddScoped<IMemberShipPlanRepository, MemberShipPlanRepository>();
-
-
+            
             services.AddScoped<IValidator<Tag>, TagValidator>();
+            services.AddScoped<IValidator<MemberShipPlan>, MemberShipPlanValidator>();
 
             var mapperConfig = new MapperConfiguration(mc =>
             {

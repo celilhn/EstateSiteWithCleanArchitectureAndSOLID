@@ -30,6 +30,16 @@ namespace Infrastructure.Repositories
             return memberShipPlan;
         }
 
+        public MemberShipPlan GetMemberShipPlan(int Id)
+        {
+            return context.MemberShipPlans.SingleOrDefault(x => x.Id == Id);
+        }
+
+        public List<MemberShipPlan> GetAllMemberShipPlans()
+        {
+            return context.MemberShipPlans.ToList();
+        }
+
         public List<MemberShipPlan> GetMemberShipPlans()
         {
             return context.MemberShipPlans.Where(x => x.Status == StatusCodes.Active).ToList();

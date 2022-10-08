@@ -1,0 +1,74 @@
+﻿@using Domain.Models
+@model List<Domain.Models.MemberShipPlan>
+@{
+    ViewData["Title"] = "ListMemberShipPlans";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/datatable-style.css">
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Tag List</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Icon Url</th>
+                            <th>Price</th>
+                            <th>List Count</th>
+                            <th>Featured List Count</th>
+                            <th>Status</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Icon Url</th>
+                            <th>Price</th>
+                            <th>List Count</th>
+                            <th>Featured List Count</th>
+                            <th>Status</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        @foreach (MemberShipPlan memberShipPlan in Model)
+                        {
+                            <tr>
+                                <td>@memberShipPlan.Id</td>
+                                <td>@memberShipPlan.Name</td>
+                                <td>@memberShipPlan.IconUrl</td>
+                                <td>@memberShipPlan.Price</td>
+                                <td>@memberShipPlan.ListCount</td>
+                                <td>@memberShipPlan.FeaturedListCount</td>
+                                <td>@memberShipPlan.Status</td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" onclick="window.location.href = '/MemberShipPlan/UpdateMemberShipPlan?Id=@memberShipPlan.Id';"><span class="mdi mdi-tooltip-edit"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" onclick="window.location.href = '/MemberShipPlan/DeleteMemberShipPlan?Id=@memberShipPlan.Id';"><span class="mdi mdi-delete-forever"></span></button></p></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function() { 
+        $('#datatable').dataTable();
+    
+        $("[data-toggle=tooltip]").tooltip();
+    }, 500);
+</script>
+
