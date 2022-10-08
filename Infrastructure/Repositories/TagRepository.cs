@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Domain.Interfaces;
 using Domain.Models;
 using Infrastructure.Context;
@@ -31,6 +32,11 @@ namespace Infrastructure.Repositories
         public Tag GetTag(int Id)
         {
             return context.Tags.SingleOrDefault(x => x.Id == Id);
+        }
+
+        public List<Tag> GetTags()
+        {
+            return context.Tags.ToList();
         }
     }
 }

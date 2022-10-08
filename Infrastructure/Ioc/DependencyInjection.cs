@@ -4,8 +4,11 @@ using Application.Logging;
 using Application.Mapping;
 using Application.Models;
 using Application.Services;
+using Application.ValidationRules.FluentValidation.Tag;
 using AutoMapper;
 using Domain.Interfaces;
+using Domain.Models;
+using FluentValidation;
 using Infrastructure.Context;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -43,6 +46,9 @@ namespace Infrastructure.Ioc
             services.AddScoped<IPropertyRepository, PropertyRepository>();
             services.AddScoped<IMemberShipPlanService, MemberShipPlanService>();
             services.AddScoped<IMemberShipPlanRepository, MemberShipPlanRepository>();
+
+
+            services.AddScoped<IValidator<Tag>, TagValidator>();
 
             var mapperConfig = new MapperConfiguration(mc =>
             {

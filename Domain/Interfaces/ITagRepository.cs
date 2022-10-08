@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using System.Collections.Generic;
+using Domain.Models;
 
 namespace Domain.Interfaces
 {
@@ -7,5 +8,6 @@ namespace Domain.Interfaces
         Tag AddTag(Tag tag);
         Tag UpdateTag(Tag tag);
         Tag GetTag(int Id);
+        List<Tag> GetTags();
     }
 }

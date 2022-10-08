@@ -1,10 +1,13 @@
-﻿using Domain.Models;
+﻿using System.Collections.Generic;
+using Domain.Models;
 
 namespace Application.Interfaces
 {
     public interface ITagService
     {
-        Tag SaveTag(Tag tag);
+        Tag AddTag(Tag tag);
+        Tag UpdateTag(Tag tag);
         Tag GetTag(int Id);
+        List<Tag> GetTags();
     }
 }
