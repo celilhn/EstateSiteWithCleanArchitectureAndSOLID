@@ -1,0 +1,208 @@
+﻿@model Domain.Models.Member
+@using static Domain.Constants.Constants;
+@using Domain.Models
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <!--Page Header Start-->
+        <section class="page-header" style="background-image: url(~/assets/images/backgrounds/page-header_bg.jpg);">
+            <div class="container">
+                <div class="page-header-inner">
+                    <h2>Members Details</h2>
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li>Members Details</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Members Details Start-->
+        <section class="members_details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="members_details_left">
+                            <div class="members_details_img">
+                                <img src="~/@Model.Images.SingleOrDefault(x=>x.Type == ImageTypes.MemberDetailImage).Url" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="members_details_right">
+                            <div class="members_details_right_title">
+                                <h3>@Model.Name</h3>
+                                <p>@Model.Title</p>
+                            </div>
+                            <div class="members_details_right_text">
+                                <p>@Model.Text</p>
+                            </div>
+                            <ul class="companies_contact_info members_details_contact_info list-unstyled">
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-phone-square-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="tel:888-666-000">@Model.PhoneNumber</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-print"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="tel:92-655-788-000">@Model.FaxNumber</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="mailto:@Model.Email">@Model.Email</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="progress_bar">
+                                <div class="progress-levels">
+                                    <!--Skill Box-->
+                                    <div class="progress-box">
+                                        <div class="text">Selling</div>
+                                        <div class="inner count-box">
+                                            <div class="bar">
+                                                <div class="bar-innner">
+                                                    <div class="skill-percent">
+                                                        <span class="count-text" data-speed="3000"
+                                                            data-stop="@Model.SellingPercent">0</span>
+                                                        <span class="percent">%</span>
+                                                    </div>
+                                                    <div class="bar-fill" data-percent="@Model.SellingPercent"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Skill Box-->
+                                    <div class="progress-box marb">
+                                        <div class="text">Buying</div>
+                                        <div class="inner count-box">
+                                            <div class="bar">
+                                                <div class="bar-innner">
+                                                    <div class="skill-percent">
+                                                        <span class="count-text" data-speed="3000"
+                                                            data-stop="@Model.BuyingPercent">0</span>
+                                                        <span class="percent">%</span>
+                                                    </div>
+                                                    <div class="bar-fill" data-percent="@Model.BuyingPercent"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="members_details__social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                <a href="#"><i class="fab fa-dribbble"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Members Details End-->
+
+        <!--Latest Properties Start-->
+        <section class="latest_properties member-page">
+            <div class="container">
+                <div class="block-title text-center">
+                    <h4>My Properties</h4>
+                    <h2>Property List</h2>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 4, "autoplay": { "delay": 5000 },
+              "navigation": {
+                "nextEl": ".latest_properties_next",
+                "prevEl": ".latest_properties_prev",
+                "clickable": true
+            },
+            "breakpoints": {
+                "0": {
+                    "spaceBetween": 30,
+                    "slidesPerView": 1
+                },
+                "425": {
+                    "spaceBetween": 30,
+                    "slidesPerView": 1
+                },
+                "575": {
+                    "spaceBetween": 30,
+                    "slidesPerView": 1
+                },
+                "767": {
+                    "spaceBetween": 30,
+                    "slidesPerView": 2
+                },
+                "991": {
+                    "spaceBetween": 20,
+                    "slidesPerView": 2
+                },
+                "1289": {
+                    "spaceBetween": 30,
+                    "slidesPerView": 3
+                },
+                "1440": {
+                    "spaceBetween": 30,
+                    "slidesPerView": 3
+                }
+            }}'>
+                        <div class="swiper-wrapper">
+                            @foreach (Property property in ViewBag.Properties)
+                            {
+                                <div class="swiper-slide">
+                                    <div class="latest_properties_single">
+                                        <div class="latest_properties_img_carousel owl-theme owl-carousel">
+                                            @foreach (Image image in property.Images.Where(x => x.Type == ImageTypes.MyPropertyImage))
+                                            {
+                                                <div class="latest_properties_img">
+                                                    <img src="~/@image.Url" alt="">
+                                                    <div class="latest_properties_icon">
+                                                        <i class="fa fa-heart"></i>
+                                                    </div>
+                                                    <div class="featured_and_sale_btn">
+                                                        <a href="#" class="featured_btn">Featured</a>
+                                                        <a href="#" class="sale_btn">For Sale</a>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="latest_properties_content">
+                                            <div class="latest_properties_top_content">
+                                                <h4>@property.Title</h4>
+                                                <p>@property.Adress</p>
+                                                <h3>$@property.Price <span>Sqft</span></h3>
+                                            </div>
+                                            <div class="latest_properties_bottom_content">
+                                                <ul class="list-unstyled">
+                                                    <li><span class="icon-bed"></span>@property.BedroomCount</li>
+                                                    <li><span class="icon-shower"></span>@property.BathRoomCount</li>
+                                                    <li><span class="icon-square-measument"></span>@property.SqftSize sqft</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Latest Properties End-->
+

@@ -1,0 +1,64 @@
+﻿@using Domain.Models
+@model List<Domain.Models.News>
+@{
+    ViewData["Title"] = "NewsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <!--Page Header Start-->
+        <section class="page-header" style="background-image: url(~/assets/images/backgrounds/page-header_bg.jpg);">
+            <div class="container">
+                <div class="page-header-inner">
+                    <h2>News</h2>
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li>News</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Blog Two Start-->
+        <section class="blog_one two blog-page">
+            <div class="container">
+                <div class="row">
+                    @foreach (News news in @Model)
+                    {
+                        <div class="col-xl-4 col-lg-4">
+                            <!--Blog One Single-->
+                            <div class="blog_one_single wow fadeInUp" data-wow-delay="00ms">
+                                <div class="blog_one_image_box">
+                                    <div class="blog_one_img">
+                                        <img src="~/@news.FileListUrl" alt="">
+                                    </div>
+                                    <div class="blog_one_date_box">
+                                        <p>20 Nov, 2020</p>
+                                    </div>
+                                </div>
+                                <div class="blog_one_content_box">
+                                    <h3><a href="/News/Detail?Id=@news.Id">@news.Title</a></h3>
+                                    <ul class="list-unstyled blog-one__meta">
+                                        <li><a href="/News/Detail?Id=@news.Id"><i class="far fa-user-circle"></i> @news.UserType</a></li>
+                                        <li><span>/</span></li>
+                                        <li><a href="/News/Detail?Id=@news.Id"><i class="far fa-comments"></i> @news.Comments.Count Comments</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <ul class="list-unstyled post-pagination d-flex justify-content-center align-items-center">
+                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                    <li><a href="#">01</a></li>
+                    <li><a href="#">02</a></li>
+                    <li><a href="#">03</a></li>
+                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                </ul><!-- /.post-pagination -->
+            </div>
+        </section>
+        <!--Blog Two End-->
+
+

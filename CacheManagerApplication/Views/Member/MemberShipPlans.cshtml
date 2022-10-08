@@ -1,0 +1,222 @@
+﻿@using Domain.Models
+@model IEnumerable<Domain.Models.MemberShipPlan>
+@{
+    ViewData["Title"] = "MemberShipPlans";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <!--Page Header Start-->
+        <section class="page-header" style="background-image: url(~/assets/images/backgrounds/page-header_bg.jpg);">
+            <div class="container">
+                <div class="page-header-inner">
+                    <h2>Membership Plans</h2>
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li>Membership Plans</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Membership Plan Start-->
+        <section class="membership_plan two">
+            <div class="container">
+                <div class="block-title text-center">
+                    <h4>Choose the Right Plan</h4>
+                    <h2>Membership Plans</h2>
+                </div>
+                <div class="row">
+                    @foreach(MemberShipPlan memberShipPlan in Model)
+                    {
+                        <div class="col-xl-4 col-lg-4">
+                            <!--Membership Plan Single-->
+                            <div class="membership_plan_single wow fadeInUp" data-wow-delay="00ms">
+                                <div class="membership_plan_icon">
+                                    <span class="@memberShipPlan.IconUrl"></span>
+                                </div>
+                                <div class="membership_plan_price">
+                                    <p>@memberShipPlan.Name</p>
+                                    <h2>$@memberShipPlan.Price.00</h2>
+                                </div>
+                                <ul class="membership_plan_serivce_list list-unstyled">
+                                    <li><span class="fa fa-check"></span>@memberShipPlan.ListCount Listings</li>
+                                    <li><span class="fa fa-check"></span>@memberShipPlan.FeaturedListCount Featured Listings</li>
+                                </ul>
+                                <div class="membership_plan_btn">
+                                    <a href="#" class="thm-btn">Choose Plan</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Membership Plan Single-->
+                        <div class="membership_plan_single wow fadeInUp" data-wow-delay="00ms">
+                            <div class="membership_plan_icon">
+                                <span class="icon-home-1"></span>
+                            </div>
+                            <div class="membership_plan_price">
+                                <p>Personal</p>
+                                <h2>$20.00</h2>
+                            </div>
+                            <ul class="membership_plan_serivce_list list-unstyled">
+                                <li><span class="fa fa-check"></span>10 Listings</li>
+                                <li><span class="fa fa-check"></span>2 Featured Listings</li>
+                            </ul>
+                            <div class="membership_plan_btn">
+                                <a href="#" class="thm-btn">Choose Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Membership Plan Single-->
+                        <div class="membership_plan_single wow fadeInUp" data-wow-delay="200ms">
+                            <div class="membership_plan_icon">
+                                <span class="icon-house"></span>
+                            </div>
+                            <div class="membership_plan_price">
+                                <p>Professional</p>
+                                <h2>$30.00</h2>
+                            </div>
+                            <ul class="membership_plan_serivce_list list-unstyled">
+                                <li><span class="fa fa-check"></span>20 Listings</li>
+                                <li><span class="fa fa-check"></span>6 Featured Listings</li>
+                            </ul>
+                            <div class="membership_plan_btn">
+                                <a href="#" class="thm-btn">Choose Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Membership Plan Single-->
+                        <div class="membership_plan_single wow fadeInUp" data-wow-delay="300ms">
+                            <div class="membership_plan_icon">
+                                <span class="icon-cityscape"></span>
+                            </div>
+                            <div class="membership_plan_price">
+                                <p>Business</p>
+                                <h2>$40.00</h2>
+                            </div>
+                            <ul class="membership_plan_serivce_list list-unstyled">
+                                <li><span class="fa fa-check"></span>40 Listings</li>
+                                <li><span class="fa fa-check"></span>20 Featured Listings</li>
+                            </ul>
+                            <div class="membership_plan_btn">
+                                <a href="#" class="thm-btn">Choose Plan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Membership Plan End-->
+
+        <!--FAQs Start-->
+        <section class="faqs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="faqs_left">
+                            <div class="block-title text-left">
+                                <h4>Frequently Aksed Questions</h4>
+                                <h2>Have Any Questions?</h2>
+                            </div>
+                            <div class="faqs_text">
+                                <p>There are many variations of passages the majority have suffered alteration in some
+                                    fo injected humour, randomised.</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="faqs_img_box">
+                                        <div class="faqs_img mar-30">
+                                            <img src="~/assets/images/resources/faq_img_1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6">
+                                    <div class="faqs_img_box">
+                                        <div class="faqs_img">
+                                            <img src="~/assets/images/resources/faq_img_2.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="faq">
+                            <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
+                                <div class="accrodion">
+                                    <div class="accrodion-title">
+                                        <h4>How to create a new listings on site</h4>
+                                    </div>
+                                    <div class="accrodion-content">
+                                        <div class="inner">
+                                            <p>There are many variations of passages the majority have suffered
+                                                alteration in some fo injected humour, randomised words believable.</p>
+                                        </div><!-- /.inner -->
+                                    </div>
+                                </div>
+                                <div class="accrodion active">
+                                    <div class="accrodion-title">
+                                        <h4>How to create a new listings on site</h4>
+                                    </div>
+                                    <div class="accrodion-content">
+                                        <div class="inner">
+                                            <p>There are many variations of passages the majority have suffered
+                                                alteration in some fo injected humour, randomised words believable.</p>
+                                        </div><!-- /.inner -->
+                                    </div>
+                                </div>
+                                <div class="accrodion">
+                                    <div class="accrodion-title">
+                                        <h4>How to create a new listings on site</h4>
+                                    </div>
+                                    <div class="accrodion-content">
+                                        <div class="inner">
+                                            <p>There are many variations of passages the majority have suffered
+                                                alteration in some fo injected humour, randomised words believable.</p>
+                                        </div><!-- /.inner -->
+                                    </div>
+                                </div>
+                                <div class="accrodion">
+                                    <div class="accrodion-title bdr-b-n">
+                                        <h4>How to create a new listings on site</h4>
+                                    </div>
+                                    <div class="accrodion-content">
+                                        <div class="inner">
+                                            <p>There are many variations of passages the majority have suffered
+                                                alteration in some fo injected humour, randomised words believable.</p>
+                                        </div><!-- /.inner -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--FAQs End-->
+
+        <!--CTA One Start-->
+        <section class="cta_one">
+            <div class="cta_one_bg" style="background-image: url(~/assets/images/backgrounds/cta_one_bg.png)"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="cta_one_inner">
+                            <div class="cta_one_text">
+                                <h2>We Help People and Homes Find Each Other</h2>
+                            </div>
+                            <div class="cta_one_btn">
+                                <a href="listing-2.html" class="thm-btn">Browse Property</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--CTA One End-->
+
+

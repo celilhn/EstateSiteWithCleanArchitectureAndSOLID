@@ -1,0 +1,585 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Domain.Models
+@using Domain.Constants
+@model Domain.Models.Property
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+
+<!-- Listings Details Main Image Box Start-->
+<section class="listings_details_main_image_box">
+    <div class="container-full-width">
+        <div class="thm__owl-carousel owl-carousel owl-theme" data-options='{"margin":10, "smartSpeed": 700, "dots": false, "items": 3, "responsive": {
+            "0": {
+                "items": 1
+            },
+            "480": {
+                "items": 2
+            },
+            "992": {
+                "items": 4
+            }
+        }}'>
+            @foreach (Image image in @Model.Images.Where(x => x.Type == Constants.ImageTypes.PropertyDetailImage))
+            {
+                <div class="item">
+                    <!--Listings Details Main Image Box Single-->
+                    <div class="listings_details_main_image_box_single">
+                        <div class="listings_details_main_image_box__img">
+                            <a href="~/@image.Url" class="img-popup">
+                                <img src="~/@image.Url" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Listings Details Main Image Box End-->
+
+<!--Listing Details Top Start-->
+<section class="listing_details_top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-4">
+                <div class="listing_details_top_left">
+                    <div class="listing_details_top_title">
+                        <h3>@Model.Title</h3>
+                        <p>@Model.Adress</p>
+                        <h4>$@Model.Price.000</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-8">
+                <div class="listing_details_top_right clearfix">
+                    <div class="listing_details_top_product_list_box">
+                        <ul class="listing_details_top_product_list list-unstyled">
+                            <li>
+                                <div class="icon_box">
+                                    <span class="icon-bed"></span>
+                                </div>
+                                <div class="text_box">
+                                    <h5>@Model.BedroomCount</h5>
+                                    <p>Bedrooms</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon_box">
+                                    <span class="icon-shower"></span>
+                                </div>
+                                <div class="text_box">
+                                    <h5>@Model.BathRoomCount</h5>
+                                    <p>Bathrooms</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon_box">
+                                    <span class="icon-square-measument"></span>
+                                </div>
+                                <div class="text_box">
+                                    <h5>@Model.SqftSize</h5>
+                                    <p>Sqft Size</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="listing_details_top_right_btn_box">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Sale</a>
+                        <p>Property ID: <span>@Model.Id</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Listing Details Top End-->
+
+<!--Listing Details Bottom End-->
+<section class="listing_details_bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="listing_details_bottom_left">
+                    <div class="listing_details_bottom_left_content">
+                        <ul class="post_rating_and_view_list list-unstyled">
+                            <li><i class="far fa-clock"></i>Posted 2 days ago</li>
+                            <li>
+                                <ul class="rating_list list-unstyled">
+                                    @for (int i = 0; i < @Model.StarCount; i++)
+                                    {
+                                        <li><i class="fas fa-star"></i></li>
+                                    }
+                                </ul>
+                            </li>
+                            <li><i class="fas fa-eye"></i>@Model.VisibleCount</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="listing_details_bottom_right">
+                    <div class="listing_details_bottom_right_btn">
+                        <a href="#"><i class="fas fa-share"></i>Share</a>
+                        <a href="#"><i class="fa fa-heart"></i>Save</a>
+                        <a href="#"><i class="fa fa-envelope"></i>Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Listing Details Top End-->
+
+<!--Listing Details Start-->
+<section class="listing_details">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-7">
+                <div class="listing_details_left">
+                    <div class="listing_details_text">
+                        <p class="text_1">@Model.Text </p>
+                    </div>
+                    <div class="listings_details_features">
+                        <div class="listings_details_features_title">
+                            <h3>Features List</h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                <ul class="listings_details_features_list list-unstyled">
+                                    <li>
+                                        <div class="listings_details_icon">
+                                            <span class="icon-extractor-hood"></span>
+                                        </div>
+                                        <div class="listings_details_content">
+                                            <p>
+                                                Floor Heating
+                                                @if(@Model.IsHaveFloorHeating != 1)
+                                                {
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                                                        <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"></path>
+                                                        <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"></path>
+                                                    </svg>
+                                                }
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="listings_details_icon">
+                                            <span class="icon-pet-house"></span>
+                                        </div>
+                                        <div class="listings_details_content">
+                                            <p>
+                                                @Model.StarCount Floors
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="listings_details_icon">
+                                            <span class="icon-shelves"></span>
+                                        </div>
+                                        <div class="listings_details_content">
+                                            <p>
+                                                Furnished
+                                                @if(@Model.IsHaveFurnished != 1)
+                                                {
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                                                        <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"></path>
+                                                        <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"></path>
+                                                    </svg>
+                                                }
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                <ul class="listings_details_features_list list-unstyled">
+                                    <li>
+                                        <div class="listings_details_icon">
+                                            <span class="icon-fireplace"></span>
+                                        </div>
+                                        <div class="listings_details_content">
+                                            <p>@Model.BuildYear Build</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="listings_details_icon">
+                                            <span class="icon-desk"></span>
+                                        </div>
+                                        <div class="listings_details_content">
+                                            <p>
+                                                Free Parking
+                                                @if(@Model.IsHaveFreeParking != 1)
+                                                {
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                                                        <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"></path>
+                                                        <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"></path>
+                                                    </svg>
+                                                }
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="listings_details_icon">
+                                            <span class="icon-staircase"></span>
+                                        </div>
+                                        <div class="listings_details_content">
+                                            <p>
+                                                Basement
+                                                @if(@Model.IsHaveBasement != 1)
+                                                {
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                                                        <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"></path>
+                                                        <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"></path>
+                                                    </svg>
+                                                }
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                <ul class="listings_details_features_list list-unstyled">
+                                    <li>
+                                        <div class="listings_details_icon">
+                                            <span class="icon-window"></span>
+                                        </div>
+                                        <div class="listings_details_content">
+                                            <p>
+                                                Glass Windows
+                                                @if(@Model.IsHaveGlassWindows != 1)
+                                                {
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                                                        <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"></path>
+                                                        <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"></path>
+                                                    </svg>
+                                                }
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="listings_details_icon">
+                                            <span class="icon-tiles"></span>
+                                        </div>
+                                        <div class="listings_details_content">
+                                            <p>
+                                                Marble Flooring
+                                                @if(@Model.IsHaveMarbleFlooring != 1)
+                                                {
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                                                        <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"></path>
+                                                        <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"></path>
+                                                    </svg>
+                                                }
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="listing_details_amenities">
+                        <h3 class="listing_details_amenities_title">Amenities</h3>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                <ul class="listing_details_amenities_single list-unstyled">
+                                    @if (@Model.IsHaveAirConditioning == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Air Conditioning</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Air Conditioning</li>
+                                    }
+                                    @if (@Model.IsHaveBarbeque == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Barbeque</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Barbeque</li>
+                                    }
+                                    @if (@Model.IsHaveDryer == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Dryer</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Dryer</li>
+                                    }
+                                    @if (@Model.IsHaveGym == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Gym</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Gym</li>
+                                    }
+                                    @if (@Model.IsHaveLaundry == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Laundry</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Laundry</li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                <ul class="listing_details_amenities_single list-unstyled">
+                                    @if (@Model.IsHaveLawn == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Lawn</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Lawn</li>
+                                    }
+                                    @if (@Model.IsHaveMicrowave == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Microwave</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Microwave</li>
+                                    }
+                                    @if (@Model.IsHaveRefrigerator == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Refrigerator</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Refrigerator</li>
+                                    }
+                                    @if (@Model.IsHaveSauna == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Sauna</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Sauna</li>
+                                    }
+                                    @if (@Model.IsHaveSwimmingPool == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Swimming Pool</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Swimming Pool</li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                <ul class="listing_details_amenities_single list-unstyled">
+                                    @if (@Model.IsHaveTVCable == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>TV Cable</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>TV Cable</li>
+                                    }
+                                    @if (@Model.IsHaveWasher == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Washer</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Washer</li>
+                                    }
+                                    @if (@Model.IsHaveWiFi == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>WiFi</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>WiFi</li>
+                                    }
+                                    @if (@Model.IsHaveWindowCoverings == 1)
+                                    {
+                                        <li><span class="icon-confirmation"></span>Window Coverings</li>
+                                    }
+                                    else
+                                    {
+                                        <li><span class="icon-confirmation clr-gray"></span>Window Coverings</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="listing_details_video">
+                                <div class="listing_details_video_title">
+                                    <h3>Property Video</h3>
+                                </div>
+                                <div class="listing_details_video_img">
+                                    <img src="~/assets/images/resources/listing_details_video_img.jpg" alt="">
+                                    <div class="listing_details_video_btn_box">
+                                        <a href="@Model.VideoUrl"
+                                            class="listing_details_video_btn video-popup"><i
+                                                class="fa fa-play"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="listing_details_location">
+                                <div class="listing_details_location_title">
+                                    <div class="left">
+                                        <h3>Property Location</h3>
+                                    </div>
+                                    <div class="right">
+                                        <p>@Model.Adress</p>
+                                    </div>
+                                </div>
+                                <div class="listing_details_location_map">
+                                    <iframe
+                                        src="@Model.IFrameUrl"
+                                        class="google-map__contact" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="listing_details_tags">
+                                <h3 class="listing_details_tags_title">Property Tags</h3>
+                                <div class="listing_details_tags_box">
+                                    @foreach (Tag tag in @Model.Tags)
+                                    {
+                                        <a href="#">@tag.Text</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Review Two Box-->
+                    <div class="review_two_box">
+                        <h3 class="review_two_box__title">Property Reviews</h3>
+                        @foreach (Comment comment in ViewBag.Comments)
+                        {
+                            <div class="review_two_box__single">
+                                <div class="review_two_box__image">
+                                    <img src="~/assets/images/resources/review-2-img-1.png" alt="">
+                                </div>
+                                <div class="review_two_box__content">
+                                    <div class="review_two_box_title">
+                                        <div class="reviewer_name">
+                                            <h3>@comment.Name</h3>
+                                        </div>
+                                    </div>
+                                    <p>@comment.Message</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!--Review Two Box Form-->
+                    <div class="review_two_box_form">
+                        <h3 class="review_two_box_form__title">Add Review</h3>
+                        <div class="review_two_box_form_rating">
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                            <a href="#"><i class="fas fa-star"></i></a>
+                        </div>
+                        <form action="inc/sendemail.php" class="review_two__form">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="review_two_input_box">
+                                        <input type="text" placeholder="Your name" name="name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="review_two_input_box">
+                                        <input type="email" placeholder="Email address" name="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="review_two_input_box">
+                                        <textarea name="message" placeholder="Write message"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <button type="submit" class="thm-btn review_from__btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5">
+                <div class="listing_details_sidebar">
+                    <div class="listing_details_sidebar_agent">
+                        <div class="listing_details_sidebar_agent_img">
+                            <img src="~/assets/images/resources/listing_details_agent_img.jpg" alt="">
+                        </div>
+                        <div class="listing_details_sidebar_agent_content">
+                            <div class="listing_details_sidebar_agent_title">
+                                <a href="/Member/Detail?Id=@Model.MemberId">
+                                <h3>@Model.Member.Name</h3>
+                                </a>
+                                <p>@Model.Member.Title</p>
+                            </div>
+                            <ul class="listing_details_sidebar_agent_contact_info list-unstyled">
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-phone-square-alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="tel:888-666-000">@Model.Member.PhoneNumber</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-print"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="tel:92-655-788-000">@Model.Member.FaxNumber</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="mailto:needhelp@company.com">@Model.Member.Email</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="mailto:needhelp@company.com">@Model.Member.Email</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="listing_details_sidebar_agent__social">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                <a href="#"><i class="fab fa-dribbble"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="listing_details_calculator">
+                        <h3 class="listing_details_calculator_title">Mortgage Calculator</h3>
+                        <div class="listing_details_calculator_input_box">
+                            <input type="text" placeholder="Sale price">
+                            <input type="text" placeholder="Interest rate %">
+                            <input type="text" placeholder="Term">
+                            <input type="text" placeholder="Down payment">
+                        </div>
+                        <button type="submit" class="thm-btn">Calculate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Listing Details End-->
+

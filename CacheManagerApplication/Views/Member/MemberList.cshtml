@@ -1,0 +1,201 @@
+﻿@using Domain.Models
+@using static Domain.Constants.Constants;
+@model IEnumerable<Domain.Models.Member>
+@{
+    ViewData["Title"] = "MemberList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <!--Page Header Start-->
+        <section class="page-header" style="background-image: url(~/assets/images/backgrounds/page-header_bg.jpg);">
+            <div class="container">
+                <div class="page-header-inner">
+                    <h2>Members</h2>
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li>Members</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Companies Start-->
+        <section class="companies">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Companies Single-->
+                        <div class="companies_single">
+                            <div class="companies_logo">
+                                <img src="~/assets/images/resources/companies_logo_1.jpg" alt="">
+                            </div>
+                            <div class="companies_content">
+                                <div class="companies_title">
+                                    <h3>Real Estate Company</h3>
+                                    <p>Los Angeles, USA</p>
+                                </div>
+                                <ul class="companies_contact_info list-unstyled">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-phone-square-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                            <a href="tel:888-666-000">888 666 000</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-print"></i>
+                                        </div>
+                                        <div class="text">
+                                            <a href="tel:92-655-788-000">92 655 788 000</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="text">
+                                            <a href="mailto:needhelp@company.com">needhelp@company.com</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="companies__social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Companies Single-->
+                        <div class="companies_single">
+                            <div class="companies_logo">
+                                <img src="~/assets/images/resources/companies_logo_2.jpg" alt="">
+                            </div>
+                            <div class="companies_content">
+                                <div class="companies_title">
+                                    <h3>Real Estate Company</h3>
+                                    <p>Los Angeles, USA</p>
+                                </div>
+                                <ul class="companies_contact_info list-unstyled">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-phone-square-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                            <a href="tel:888-666-000">888 666 000</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-print"></i>
+                                        </div>
+                                        <div class="text">
+                                            <a href="tel:92-655-788-000">92 655 788 000</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="text">
+                                            <a href="mailto:needhelp@company.com">needhelp@company.com</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="companies__social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4">
+                        <!--Companies Single-->
+                        <div class="companies_single">
+                            <div class="companies_logo">
+                                <img src="~/assets/images/resources/companies_logo_3.jpg" alt="">
+                            </div>
+                            <div class="companies_content">
+                                <div class="companies_title">
+                                    <h3>Real Estate Company</h3>
+                                    <p>Los Angeles, USA</p>
+                                </div>
+                                <ul class="companies_contact_info list-unstyled">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-phone-square-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                            <a href="tel:888-666-000">888 666 000</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-print"></i>
+                                        </div>
+                                        <div class="text">
+                                            <a href="tel:92-655-788-000">92 655 788 000</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="text">
+                                            <a href="mailto:needhelp@company.com">needhelp@company.com</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="companies__social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Companies End-->
+
+        <!--Team One Start-->
+        <section class="team_one">
+            <div class="container">
+                <div class="block-title text-center">
+                    <h4>Expert People</h4>
+                    <h2>Meet Our Agents</h2>
+                </div>
+                <div class="row">
+                    @foreach (Member member in Model)
+                    {
+                        <div class="col-xl-3 col-lg-6 col-md-6">
+                            <!--Team One Single-->
+                            <div class="team_one_single wow fadeInLeft" data-wow-delay="100ms">
+                                <div class="team_one_img">
+                                    <img src="~/@member.Images.SingleOrDefault(x=>x.Type == ImageTypes.MemberListImage).Url" alt="">
+                                </div>
+                                <div class="team_one_content">
+                                    <h4>@member.Name</h4>
+                                    <a href="tel:888-666-000"><i class="fa fa-phone"></i>@member.PhoneNumber</a>
+                                </div>
+                                <div class="team_one_view_details">
+                                    <a href="/Member/Detail?Id=@member.Id">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+        <!--Team One End-->
+

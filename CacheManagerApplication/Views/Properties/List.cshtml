@@ -1,0 +1,234 @@
+﻿@using Domain.Models
+@using static Domain.Constants.Constants;
+@model IEnumerable<Domain.Models.Property>
+@{
+    ViewData["Title"] = "List2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <!--Listing One Start-->
+        <section class="listing_one_wrap two">
+            <div class="container-full-width clearfix">
+                <div class="listing__one__map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd"
+                        class="google-map" allowfullscreen></iframe>
+                </div>
+                <div class="listing_one_content_right">
+                    <form class="listing_one_content_right_form">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="listing_one_content_right_input_box">
+                                    <h4 class="title">Choose Category</h4>
+                                    <select class="selectpicker" data-width="100%">
+                                        <option selected="selected">For Rent</option>
+                                        <option>Default Sorting 1</option>
+                                        <option>Default Sorting 2</option>
+                                        <option>Default Sorting 3</option>
+                                        <option>Default Sorting 4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="listing_one_content_right_input_box">
+                                    <h4 class="title">Choose Location</h4>
+                                    <select class="selectpicker" data-width="100%">
+                                        <option selected="selected">All Locations</option>
+                                        <option>Default Sorting 1</option>
+                                        <option>Default Sorting 2</option>
+                                        <option>Default Sorting 3</option>
+                                        <option>Default Sorting 4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="listing_one_content_right_input_box">
+                                    <h4 class="title">Size</h4>
+                                    <input type="text" placeholder="Min" class="min_input_box">
+                                    <input type="text" placeholder="Max" class="max_input_box">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="listing_one_quantity_and_price-ranger">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="listing_one_quantity_box">
+                                    <div class="product-quantity-box">
+                                        <div class="input-box">
+                                            <p class="title">Bedrooms</p>
+                                            <input class="quantity-spinner" type="text" value="1" name="quantity">
+                                        </div>
+                                    </div>
+                                    <div class="product-quantity-box bathrooms">
+                                        <div class="input-box">
+                                            <p class="title">Bathrooms</p>
+                                            <input class="quantity-spinner" type="text" value="1" name="quantity">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="price_sidebar">
+                                    <div class="price_sidebar_title">
+                                        <h3>Price Range</h3>
+                                    </div>
+                                    <div class="price-ranger">
+                                        <div id="slider-range"></div>
+                                        <div class="ranger-min-max-block">
+                                            <span>From</span>
+                                            <input type="text" readonly class="min">
+                                            <span>to</span>
+                                            <input type="text" readonly class="max">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter_by_tags">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="pets-friendly" id="tag_1">
+                                    <label for="tag_1"><span></span>Air Conditioning</label>
+                                </div>
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="plumbing" id="tag_2" checked>
+                                    <label for="tag_2"><span></span>Swimming Pool</label>
+                                </div>
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="house-cleaning" id="tag_3">
+                                    <label for="tag_3"><span></span>Lawn</label>
+                                </div>
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="business-financing" id="tag_4">
+                                    <label for="tag_4"><span></span>Outdoor</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="accepts-credit Cards" id="tag_5">
+                                    <label for="tag_5"><span></span>Gym</label>
+                                </div>
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="bike-parking" id="tag_6">
+                                    <label for="tag_6"><span></span>Window Coverings</label>
+                                </div>
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="coupons" id="tag_7">
+                                    <label for="tag_7"><span></span>Wireless Internet</label>
+                                </div>
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="parking-street" id="tag_8">
+                                    <label for="tag_8"><span></span>TV Cable</label>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="wireless-internet" id="tag_9">
+                                    <label for="tag_9"><span></span>Laundry</label>
+                                </div>
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="smoking-allowed" id="tag_10">
+                                    <label for="tag_10"><span></span>Back Yard</label>
+                                </div>
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="bed-&-breakfast" id="tag_11">
+                                    <label for="tag_11"><span></span>Shower</label>
+                                </div>
+                                <div class="single_tags_check__box">
+                                    <input type="checkbox" name="bed-&-breakfast" id="tag_12">
+                                    <label for="tag_12"><span></span>Barbeque</label>
+                                </div>
+                            </div>
+                            <div class="filter_by_tags_btn">
+                                <a href="#" class="filter_results">Filter Results</a>
+                                <a href="#" class="save_search">Save Search</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="filter">
+                                <div class="filter_inner_content">
+                                    <div class="left">
+                                        <div class="left_icon">
+                                            <a href="listing-1.html" class="icon-grid "></a>
+                                            <a href="listing-2.html" class="list-icon active icon-list"></a>
+                                        </div>
+                                        <div class="left_text">
+                                            <h4>Over @Model.Count() Results Found</h4>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="shorting">
+                                            <select class="selectpicker" data-width="100%">
+                                                <option selected="selected">Default Sorting</option>
+                                                <option>Default Sorting 1</option>
+                                                <option>Default Sorting 2</option>
+                                                <option>Default Sorting 3</option>
+                                                <option>Default Sorting 4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="listings_two_page_content">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="listings_two_page_content_inner">
+                                    @foreach (Property property in Model)
+                                    {
+                                        <div class="listings_two_page_content_single">
+                                            <div class="listings_two_page_main_img">
+                                                <div class="listings_two_page_content_carousel owl-theme owl-carousel">
+                                                    @foreach (Image image in property.Images.Where(x=>x.Type == ImageTypes.PropertyListImage))
+                                                    {
+                                                        <div class="listings_two_page_img">
+                                                            <div class="listings_two_page_content_img_box">
+                                                                <img src="~/@image.Url" alt="">
+                                                            </div>
+                                                            <div class="listings_two_page_content_icon">
+                                                                <i class="fa fa-heart"></i>
+                                                            </div>
+                                                            <div class="listingstwo_page_content_btn">
+
+                                                                <a href="#" class="sale_btn">For Sale</a>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="listings_two_page_bottom_content">
+                                                <div class="listings_two_page_bottom_content_top">
+                                                    <h4><a href="/Properties/Detail?Id=@property.Id">@property.Title</a></h4>
+                                                    <p>@property.Adress</p>
+                                                    <h3>$@property.Price <span>Sqft</span></h3>
+                                                </div>
+                                                <div class="listings_two_page_bottom_item">
+                                                    <ul class="list-unstyled">
+                                                        <li><span class="icon-bed"></span>@property.BedroomCount</li>
+                                                        <li><span class="icon-shower"></span>@property.BathRoomCount</li>
+                                                        <li><span class="icon-square-measument"></span>@property.SqftSize sqft</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="listings_page_content_load_more_btn">
+                                    <a href="#" class="thm-btn">Load More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Listing One End-->
+
