@@ -1,0 +1,72 @@
+﻿@model Domain.Models.Member
+@{
+    ViewData["Title"] = "UpdateMember";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Update Tag</h4>
+                    <p class="card-description">
+                
+                    </p>
+                    <form asp-action="UpdateMember">
+                        <div class="form-group">
+                            <label>Id</label>
+                            <input type="text" class="form-control" disabled value="@Model.Id">
+                            <input type="text" class="form-control" asp-for="Id" name="Id" hidden="hidden" value="@Model.Id">
+                        </div>
+                        <div class="form-group" hidden="hidden">
+                            <label>Id</label>
+                            <input type="text" class="form-control" asp-for="InsertionDate" name="InsertionDate" hidden="hidden" value="@Model.InsertionDate">
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" asp-for="Name" name="Name" value="@Model.Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" asp-for="Title" name="Title" value="@Model.Title">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Text</label>
+                            <input type="text" class="form-control" asp-for="Text" name="Text" value="@Model.Text">
+                            <span asp-validation-for="Text" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" class="form-control" asp-for="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Fax Number</label>
+                            <input type="text" class="form-control" asp-for="FaxNumber" name="FaxNumber" value="@Model.FaxNumber">
+                            <span asp-validation-for="FaxNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Selling Percent</label>
+                            <input type="number" class="form-control" asp-for="SellingPercent" name="SellingPercent" value="@Model.SellingPercent">
+                            <span asp-validation-for="SellingPercent" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Buying Percent</label>
+                            <input type="number" class="form-control" asp-for="BuyingPercent" name="BuyingPercent" value="@Model.BuyingPercent">
+                            <span asp-validation-for="BuyingPercent" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Text">Status</label>
+                            @Html.DropDownList("Status", (IEnumerable<SelectListItem>)ViewBag.status, htmlAttributes: new { @class = "form-control" })
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

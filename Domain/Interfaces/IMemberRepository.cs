@@ -8,6 +8,7 @@ namespace Domain.Interfaces
         Member AddMember(Member member);
         Member UpdateMember(Member member);
         Member GetMember(int Id);
+        List<Member> GetAllMembers();
         List<Member> GetMembers();
     }
 }

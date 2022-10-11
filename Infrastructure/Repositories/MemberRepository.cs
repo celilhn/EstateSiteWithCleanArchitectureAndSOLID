@@ -35,6 +35,11 @@ namespace Infrastructure.Repositories
             return context.Members.SingleOrDefault(x => x.Id == Id);
         }
 
+        public List<Member> GetAllMembers()
+        {
+            return context.Members.ToList();
+        }
+
         public List<Member> GetMembers()
         {
             return context.Members.Where(x => x.Status == StatusCodes.Active).ToList();

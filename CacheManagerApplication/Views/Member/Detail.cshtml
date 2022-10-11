@@ -28,7 +28,7 @@
                     <div class="col-xl-6 col-lg-6">
                         <div class="members_details_left">
                             <div class="members_details_img">
-                                <img src="~/@Model.Images.SingleOrDefault(x=>x.Type == ImageTypes.MemberDetailImage).Url" alt="">
+                                <img src="~/assets/images/@Model.Images.SingleOrDefault(x=>x.Type == ImageTypes.MemberDetailImage).Url" alt="">
                             </div>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
                                             @foreach (Image image in property.Images.Where(x => x.Type == ImageTypes.MyPropertyImage))
                                             {
                                                 <div class="latest_properties_img">
-                                                    <img src="~/@image.Url" alt="">
+                                                    <img src="~/assets/images/@image.Url" alt="">
                                                     <div class="latest_properties_icon">
                                                         <i class="fa fa-heart"></i>
                                                     </div>

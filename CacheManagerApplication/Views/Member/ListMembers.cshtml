@@ -1,0 +1,86 @@
+﻿@using Domain.Models
+@model List<Domain.Models.Member>
+@{
+    ViewData["Title"] = "ListMembers";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/assets/css/datatable-style.css">
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Tag List</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Phone Number</th>
+                            <th>Fax Number</th>
+                            <th>Email</th>
+                            <th>Selling Percent</th>
+                            <th>Buying Percent</th>
+                            <th>Status</th>
+                            <th>Add Image</th>
+                            <th>List Images</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Phone Number</th>
+                            <th>Fax Number</th>
+                            <th>Email</th>
+                            <th>Selling Percent</th>
+                            <th>Buying Percent</th>
+                            <th>Status</th>
+                            <th>Add Image</th>
+                            <th>List Images</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        @foreach (Member member in Model)
+                        {
+                            <tr>
+                                <td>@member.Id</td>
+                                <td>@member.Name</td>
+                                <td>@member.Title</td>
+                                <td>@member.PhoneNumber</td>
+                                <td>@member.FaxNumber</td>
+                                <td>@member.Email</td>
+                                <td>@member.SellingPercent</td>
+                                <td>@member.BuyingPercent</td>
+                                <td>@member.Status</td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="List"><button class="btn btn-warning btn-xs" data-title="List" onclick="window.location.href = '/Member/CreateMemberImage?memberId=@member.Id';"><span class="mdi mdi-upload"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="List"><button class="btn btn-success btn-xs" data-title="List" onclick="window.location.href = '/Member/ListMemberImages?Id=@member.Id';"><span class="mdi mdi-format-list-bulleted"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" onclick="window.location.href = '/Member/UpdateMember?Id=@member.Id';"><span class="mdi mdi-tooltip-edit"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" onclick="window.location.href = '/Member/DeleteMember?Id=@member.Id';"><span class="mdi mdi-delete-forever"></span></button></p></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function() { 
+        $('#datatable').dataTable();
+    
+        $("[data-toggle=tooltip]").tooltip();
+    }, 500);
+</script>

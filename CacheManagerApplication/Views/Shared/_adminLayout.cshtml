@@ -14,15 +14,19 @@
     <link rel="stylesheet" href="~/assets/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="~/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-    <link rel="stylesheet" href="~/assets/js/select.dataTables.min.css">
-    <!-- End plugin css for this page -->
+    <link rel="stylesheet" href="~/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
     <!-- inject:css -->
     <link rel="stylesheet" href="~/assets/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="~/assets/images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
+    
+    <link rel="stylesheet" href="~/assets/richtexteditor/rte_theme_default.css" />  
+    <link rel="stylesheet" href="~/assets/richtexteditor/runtime/richtexteditor_preview.css" />
+    <script type="text/javascript" src="~/assets/richtexteditor/rte.js"></script> 
+    <script type="text/javascript" src="~/assets/richtexteditor/plugins/all_plugins.js"></script>  
+    <script type="text/javascript" src="~/assets/richtexteditor/rte-upload.js"></script>
 </head>
 <body>
     <div class="container-scroller">
@@ -471,6 +475,19 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="~/assets/#tag-elements3" aria-expanded="false" aria-controls="tag-elements3">
+                            <i class="menu-icon mdi mdi-floor-plan"></i>
+                            <span class="menu-title">Member Management</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="tag-elements3">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" onclick="window.location.href='/Member/ListMembers'">List Members</a></li>
+                                <li class="nav-item"> <a class="nav-link" onclick="window.location.href='/Member/CreateMember'">Create Member</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="~/assets/#tag-elements2" aria-expanded="false" aria-controls="tag-elements2">
                             <i class="menu-icon mdi mdi-floor-plan"></i>
                             <span class="menu-title">MemberShip Plan Management</span>
@@ -507,9 +524,7 @@
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="~/assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="~/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="~/assets/vendors/progressbar.js/progressbar.min.js"></script>
-
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="~/assets/js/off-canvas.js"></script>
@@ -518,14 +533,7 @@
     <script src="~/assets/js/settings.js"></script>
     <script src="~/assets/js/todolist.js"></script>
     <!-- endinject -->
-    <!-- Custom js for this page-->
-    <script src="~/assets/js/jquery.cookie.js" type="text/javascript"></script>
-    <script src="~/assets/js/dashboard.js"></script>
-    <script src="~/assets/js/Chart.roundedBarCharts.js"></script>
-
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
-@RenderSection("Styles", false/*required*/)
-<!-- End custom js for this page-->
 </body>
 
 </html>

@@ -1,0 +1,60 @@
+﻿@model Domain.Models.Member
+@{
+    ViewData["Title"] = "CreateMember";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Create Member </h4>
+                    <p class="card-description">
+                
+                    </p>
+                    <form asp-action="CreateMember" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" asp-for="Name" name="Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" asp-for="Title" name="Title">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Text</label>
+                            <input type="text" class="form-control" asp-for="Text" name="Text">
+                            <span asp-validation-for="Text" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" class="form-control" asp-for="PhoneNumber" name="PhoneNumber">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Fax Number</label>
+                            <input type="text" class="form-control" asp-for="FaxNumber" name="FaxNumber">
+                            <span asp-validation-for="FaxNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Selling Percent</label>
+                            <input type="number" class="form-control" asp-for="SellingPercent" name="SellingPercent">
+                            <span asp-validation-for="SellingPercent" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Buying Percent</label>
+                            <input type="number" class="form-control" asp-for="BuyingPercent" name="BuyingPercent">
+                            <span asp-validation-for="BuyingPercent" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

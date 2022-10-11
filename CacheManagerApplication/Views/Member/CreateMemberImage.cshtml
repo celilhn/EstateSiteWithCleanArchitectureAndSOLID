@@ -1,0 +1,42 @@
+﻿@model Domain.Models.Member
+@{
+    ViewData["Title"] = "CreateMemberImage";
+    Layout = "~/Views/Shared/_adminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Create Member Image</h4>
+                    <p class="card-description">
+                
+                    </p>
+                    <form asp-action="CreateMemberImage" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="memberId" hidden="hidden" value="@ViewBag.memberId">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="type">
+                                <option value="5"> Member List Image (270X303)</option>
+                                <option value="6"> Member Detail Image (570X633)</option>
+                                <option value="8"> Member In Property Image (310X323)</option>
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label>File upload </label>
+                            <div class="input-group">
+                                <input type="file" class="form-control file-upload-info" accept="image/png, image/gif, image/jpeg" name="file">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+
