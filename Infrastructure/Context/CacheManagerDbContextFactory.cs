@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
@@ -31,8 +32,7 @@ namespace Infrastructure.Context
         private static string GetDbConnectionText()
         {
             string connectionString = AppUtilities.GetConfigurationValue("DBConnectionText");
-            //connectionString = string.Format(connectionString, Environment.GetEnvironmentVariable("FuntasyDbUser"), Environment.GetEnvironmentVariable("FuntasyDbPassword"));
-            //Sunucu restartında ne olacağına emin olunmadığı için comment alındı
+            connectionString = string.Format(connectionString, Environment.GetEnvironmentVariable("ECommerceDbUser"), Environment.GetEnvironmentVariable("ECommerceDbPassword"));
             return connectionString;
         }
     }

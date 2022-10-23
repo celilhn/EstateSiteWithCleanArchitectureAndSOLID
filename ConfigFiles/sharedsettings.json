@@ -1,3 +1,3 @@
 {
-  "DBConnectionText": "server=AMVGTESTDBSRV; user=aeradmin; password=rXkT84YV; database=WITCHER;"
+  "DBConnectionText": "server=AMVGTESTDBSRV; user={0}; password={1}; database=WITCHER;"
 }

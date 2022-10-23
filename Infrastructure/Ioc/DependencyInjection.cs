@@ -1,4 +1,5 @@
-﻿using Application.Extensions;
+﻿using System;
+using Application.Extensions;
 using Application.Interfaces;
 using Application.Logging;
 using Application.Mapping;
@@ -26,7 +27,7 @@ namespace Infrastructure.Ioc
             Configuration configuration = _configuration.Get<Configuration>();
             services.AddSingleton(configuration);
             services.AddDbContext<CacheManagerDbContext>(options => options.UseSqlServer(
-                  configuration.DBConnectionText,
+                  GetDbConnectionText(configuration),
                   b => b.MigrationsAssembly(typeof(CacheManagerDbContext).Assembly.FullName)));
             services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<ICacheManager, CacheManager>();
@@ -59,6 +60,13 @@ namespace Infrastructure.Ioc
             });
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
+        }
+
+        private static string GetDbConnectionText(Configuration configuration)
+        {
+            string connectionString = configuration.DBConnectionText;
+            connectionString = string.Format(connectionString, Environment.GetEnvironmentVariable("ECommerceDbUser"), Environment.GetEnvironmentVariable("ECommerceDbPassword"));
+            return connectionString;
         }
     }
 }
